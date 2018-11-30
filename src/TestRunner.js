@@ -4,12 +4,23 @@ import $RefParser from 'json-schema-ref-parser';
 import SwaggerParser from 'swagger-parser';
 import chalk from 'chalk';
 import collect from './collect';
+import generate from './generate';
 
 export const STORE_SYMBOL = Symbol('store');
 
+function createAssertLog({ settings }) {
+  let first = false;
+  return function assertlog(condition, description) {
+    if (settings.logger && !condition && (settings.logall || !first)) {
+      first = true;
+      settings.logger.log(chalk.red(description));
+    }
+    settings.assert(condition);
+  };
+}
+
 export default class TestRunner {
   constructor() {
-    this._first = false;
     this[STORE_SYMBOL] = {
       app: null,
       url: null,
@@ -27,27 +38,16 @@ export default class TestRunner {
       },
       context: {},
       oas: Promise.resolve(null),
-      collection: Promise.resolve(null),
-      assertlog: (condition, description) => {
-        const { settings } = this[STORE_SYMBOL];
-        if (
-          settings.logger &&
-          !condition &&
-          (settings.logall || !this._first)
-        ) {
-          this._first = true;
-          settings.logger.log(chalk.red(description));
-        }
-        settings.assert(condition);
-      }
+      collection: Promise.resolve(null)
     };
+    this[STORE_SYMBOL].assertlog = createAssertLog(this[STORE_SYMBOL]);
   }
   get context() {
     return this[STORE_SYMBOL].context;
   }
   load({ app, url, oas } = {}) {
-    this[STORE_SYMBOL].app = app || null;
-    this[STORE_SYMBOL].url = url || null;
+    if (app !== undefined) this[STORE_SYMBOL].app = app || null;
+    if (url !== undefined) this[STORE_SYMBOL].url = url || null;
 
     if (oas) {
       // Dereference and validate oas
@@ -59,7 +59,7 @@ export default class TestRunner {
         });
       this[STORE_SYMBOL].oas = promise;
       this[STORE_SYMBOL].collection = promise.then(collect);
-    } else {
+    } else if (oas !== undefined) {
       this[STORE_SYMBOL].oas = Promise.resolve(null);
       this[STORE_SYMBOL].collection = Promise.resolve(null);
     }
@@ -81,6 +81,9 @@ export default class TestRunner {
   clone() {
     const testRunner = new TestRunner();
     testRunner[STORE_SYMBOL] = deep(this[STORE_SYMBOL]);
+    testRunner[STORE_SYMBOL].assertlog = createAssertLog(
+      testRunner[STORE_SYMBOL]
+    );
     return testRunner;
   }
   self(cb) {
@@ -97,6 +100,7 @@ export default class TestRunner {
       );
     }
 
+    generate(store, tests);
     return this;
   }
 }
