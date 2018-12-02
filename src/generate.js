@@ -1,6 +1,8 @@
 import supertest from 'supertest';
 import superagent from 'superagent';
 import urlJoin from 'url-join';
+import validate from './validate';
+import getData, { paramsToPath, requestData } from './data';
 
 function taskDefaults(task, hasOas) {
   const defaults = {
@@ -57,10 +59,12 @@ async function runTask(store, info, task) {
   if (Math.max(task.repeat, 0) - info.iteration < 1) return;
 
   const endpoint = info.endpoint;
-  const data = task.data; // TODO
+  const data = task.data
+    ? await getData(hooks, task, info, endpoint.operation)
+    : undefined;
 
   // Get data, path with params, and body
-  const path = endpoint.path; // TODO
+  const path = paramsToPath(endpoint.path, data);
   const body = data && data.body;
 
   // Prepare request
@@ -69,7 +73,7 @@ async function runTask(store, info, task) {
     : superagent[endpoint.method](urlJoin(url, path));
 
   // Run data request parameters (header, query, cookies)
-  // TODO
+  if (data) requestData(req, data);
 
   // Run request hooks
   await hooks.request.reduce((acc, hook) => {
@@ -91,7 +95,7 @@ async function runTask(store, info, task) {
   await task.response(res, info, task);
 
   // Run validate
-  // TODO
+  if (task.validate) validate(store, task.validate, res, info);
 
   return runTask(store, { ...info, iteration: info.iteration + 1 }, task);
 }
