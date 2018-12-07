@@ -118,6 +118,10 @@ export default function userTests(tr) {
 
 ## `TestRunner`
 
+### `TestRunner.promise`
+
+A promise that will resolve once all tests ([`TestRunner.test()`](#TestRunnertesttests-TestRunner)) have run.
+
 ### `TestRunner.context`
 
 Initialized as an empty *object,* accessible to all tasks as [`info.context`.](#info-object)
@@ -141,6 +145,7 @@ If the object has already been `load`ed with an `app`, `url`, or `oas` (which wi
     * `callback` can return a promise to signal the test has finished ([example](https://jestjs.io/docs/en/asynchronous#promises)).
   * `logger`: *object,* must have `log` property of type *function*. Used to log additional details for failed tests.
   * `logall`: *boolean,* whether or not to log all failed tests details or just the first failed test details.
+  * `errorHandler`: *function,* it will catch non-test related errors of async behavior for synchronous return functions, mostly having to do with incorrect `oas-test` usage. If absert, these errors will be thrown.
 
 Default `settings` -for usage with [*Jest*](https://jestjs.io/docs/en/getting-started):
 

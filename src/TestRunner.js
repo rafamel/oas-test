@@ -21,6 +21,7 @@ function createAssertLog({ settings }) {
 
 export default class TestRunner {
   constructor() {
+    this.promise = Promise.resolve();
     this[STORE_SYMBOL] = {
       app: null,
       url: null,
@@ -29,7 +30,10 @@ export default class TestRunner {
         describe: describe,
         test: test,
         logger: console,
-        logall: false
+        logall: false,
+        errorHandler: (err) => {
+          throw err;
+        }
       },
       hooks: {
         data: [],
@@ -54,9 +58,7 @@ export default class TestRunner {
       const promise = Promise.resolve(oas)
         .then((oas) => $RefParser.dereference(deep(oas)))
         .then((oas) => SwaggerParser.validate(oas))
-        .catch((e) => {
-          throw e;
-        });
+        .catch((err) => this[STORE_SYMBOL].settings.errorHandler(err));
       this[STORE_SYMBOL].oas = promise;
       this[STORE_SYMBOL].collection = promise.then(collect);
     } else if (oas !== undefined) {
@@ -100,7 +102,11 @@ export default class TestRunner {
       );
     }
 
-    generate(store, tests);
+    const p = generate(store, tests).catch((err) => {
+      return store.settings.errorHandler(err);
+    });
+    this.promise = this.promise.then(() => p);
+
     return this;
   }
 }

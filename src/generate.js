@@ -1,6 +1,7 @@
 import supertest from 'supertest';
 import superagent from 'superagent';
 import urlJoin from 'url-join';
+import { deferred } from 'promist';
 import validate from './validate';
 import getData, { paramsToPath, requestData } from './data';
 
@@ -100,21 +101,43 @@ async function runTask(store, info, task) {
   return runTask(store, { ...info, iteration: info.iteration + 1 }, task);
 }
 
+function createCount(initialValue, onZero) {
+  let count = initialValue;
+  return {
+    decrease() {
+      count--;
+      if (count <= 0) return onZero();
+    }
+  };
+}
+
 export default function generate(store, tests) {
   const { settings } = store;
 
-  return Object.entries(tests).forEach(([operationId, tasks]) => {
+  const promise = deferred();
+  const count = createCount(
+    Object.values(tests).reduce(
+      (acc, tasks) => acc + Object.keys(tasks).length,
+      0
+    ),
+    () => promise.resolve()
+  );
+
+  Object.entries(tests).forEach(([operationId, tasks]) => {
     settings.describe(operationId, () => {
       Object.entries(tasks).forEach(([taskName, task]) => {
         settings.test(taskName, (done) => {
           return initTask(store, operationId, taskName, task)
             .then(({ info, task }) => runTask(store, info, task))
-            .then(() => typeof done === 'function' && done())
-            .catch((e) => {
-              throw e;
-            });
+            .then(() => {
+              count.decrease();
+              if (typeof done === 'function') done();
+            })
+            .catch((e) => promise.reject(e));
         });
       });
     });
   });
+
+  return promise;
 }
