@@ -1,6 +1,6 @@
 # Project Specific #
 ####################
-docs
+/docs
 
 # Node, Frameworks, Editors #
 #############################
@@ -16,7 +16,6 @@ dist
 coverage
 node_modules
 npm-debug.log
-package-lock.json
 
 # Compiled source #
 ###################

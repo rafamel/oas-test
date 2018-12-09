@@ -23,7 +23,8 @@ module.exports = scripts({
     default: 'eslint ./src --ext .js',
     test: 'eslint ./test --ext .js',
     md: 'markdownlint *.md --config markdown.json',
-    scripts: 'jake lintscripts'
+    scripts: 'jake lintscripts',
+    typings: 'tslint ./typings/**/*'
   },
   test: {
     default: 'nps lint.test && jest ./test/.*.test.js',
@@ -31,9 +32,14 @@ module.exports = scripts({
       'onchange "./{test,src}/**/*.{js,jsx,ts}" -i -- nps private.test_watch'
   },
   validate:
-    'nps fix lint lint.test lint.md lint.scripts test private.validate_last',
+    'nps fix lint lint.test lint.md lint.scripts lint.typings test private.validate_last',
   update: 'npm update --save/save-dev && npm outdated',
   clean: `${exit0(`shx rm -r ${OUT_DIR} coverage`)} && shx rm -rf node_modules`,
+  docs: series([
+    'nps lint.typings',
+    exit0(`shx rm -r ${DOCS_DIR}`),
+    `typedoc --out ${DOCS_DIR} ./typings/`
+  ]),
   // Private
   private: {
     watch: `jake clear && nps lint && babel src --out-dir ${OUT_DIR}`,
