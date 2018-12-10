@@ -1,0 +1,299 @@
+{
+  "openapi": "3.0.0",
+  "servers": [],
+  "info": {
+    "version": "0.0.0",
+    "title": "Powerful OpenAPI 3.0 based API testing, simplified.",
+    "description": "Powerful OpenAPI 3.0 based API testing, simplified. OAS 3 specification.",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "tags": [
+    {
+      "name": "user",
+      "description": "User operations"
+    }
+  ],
+  "paths": {
+    "/api/todo": {
+      "get": {
+        "tags": ["todo"],
+        "operationId": "listTodo",
+        "summary": "listTodo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Todos"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": ["todo"],
+        "operationId": "createTodo",
+        "summary": "createTodo",
+        "parameters": [],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/TodoCreate"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Todo"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/todo/{id}": {
+      "get": {
+        "tags": ["todo"],
+        "operationId": "showTodo",
+        "summary": "showTodo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Todo"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": ["todo"],
+        "operationId": "updateTodo",
+        "summary": "updateTodo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/TodoCreate"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Todo"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": ["todo"],
+        "operationId": "patchTodo",
+        "summary": "patchTodo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/TodoPatch"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Todo"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": ["todo"],
+        "operationId": "deleteTodo",
+        "summary": "deleteTodo",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["status", "data"],
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": ["success"]
+                    },
+                    "data": {
+                      "type": "boolean",
+                      "enum": [true]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Todo": {
+        "type": "object",
+        "required": ["name", "done", "user_id", "created_at", "id"],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "done": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "TodoCreate": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": ["name", "done"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "done": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "TodoPatch": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "minProperties": 1,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 255
+                },
+                "done": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "required": true
+      }
+    },
+    "responses": {
+      "Todo": {
+        "description": "Sucessful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": ["status", "data"],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "enum": ["success"]
+                },
+                "data": {
+                  "$ref": "#/components/schemas/Todo"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Todos": {
+        "description": "Sucessful response",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": ["status", "data"],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "enum": ["success"]
+                },
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Todo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "id": {
+        "name": "id",
+        "in": "path",
+        "description": "ID of the item to return",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "User access token as header bearer token (Authorization: Bearer access_token)"
+      }
+    },
+    "examples": {},
+    "headers": {},
+    "links": {},
+    "callbacks": {}
+  },
+  "security": []
+}

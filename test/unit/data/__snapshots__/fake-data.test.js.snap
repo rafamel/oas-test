@@ -1,0 +1,290 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Multiple Mime Type No parameters 1`] = `
+Object {
+  "all": Object {
+    "application/json": Object {
+      "body": Object {
+        "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+        "password": "FFFFFF FFFFFF",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {},
+      "params": Object {},
+      "query": Object {},
+    },
+    "application/xml": Object {
+      "body": Object {
+        "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+        "password": "FFFFFF FFFFFF",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {},
+      "params": Object {},
+      "query": Object {},
+    },
+  },
+  "mimeTypes": Array [
+    "application/json",
+    "application/xml",
+  ],
+  "required": Object {
+    "application/json": Object {
+      "body": Object {
+        "password": "FFFFFF FFFFFF",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {},
+      "params": Object {},
+      "query": Object {},
+    },
+    "application/xml": Object {
+      "body": Object {
+        "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {},
+      "params": Object {},
+      "query": Object {},
+    },
+  },
+}
+`;
+
+exports[`Multiple Mime Type No request body 1`] = `
+Object {
+  "all": Object {
+    "application/json": Object {
+      "body": Object {},
+      "cookies": Object {},
+      "headers": Object {
+        "some": 0,
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {
+        "name": 0,
+      },
+    },
+    "application/xml": Object {
+      "body": Object {},
+      "cookies": Object {},
+      "headers": Object {
+        "some": "Lorem anim ipsum",
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {
+        "name": "Lorem anim ipsum",
+      },
+    },
+  },
+  "mimeTypes": Array [
+    "application/xml",
+    "application/json",
+  ],
+  "required": Object {
+    "application/json": Object {
+      "body": Object {},
+      "cookies": Object {},
+      "headers": Object {
+        "some": 0,
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {},
+    },
+    "application/xml": Object {
+      "body": Object {},
+      "cookies": Object {},
+      "headers": Object {
+        "some": "Lorem anim ipsum",
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {},
+    },
+  },
+}
+`;
+
+exports[`Multiple Mime Type Parameters and request body 1`] = `
+Object {
+  "all": Object {
+    "application/json": Object {
+      "body": Object {
+        "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+        "password": "FFFFFF FFFFFF",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {
+        "some": 0,
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {
+        "name": 0,
+      },
+    },
+    "application/xml": Object {
+      "body": Object {
+        "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+        "password": "FFFFFF FFFFFF",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {
+        "some": "Lorem anim ipsum",
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {
+        "name": "Lorem anim ipsum",
+      },
+    },
+  },
+  "mimeTypes": Array [
+    "application/json",
+    "application/xml",
+  ],
+  "required": Object {
+    "application/json": Object {
+      "body": Object {
+        "password": "FFFFFF FFFFFF",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {
+        "some": 0,
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {},
+    },
+    "application/xml": Object {
+      "body": Object {
+        "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+        "username": "FFFFFF",
+      },
+      "cookies": Object {},
+      "headers": Object {
+        "some": "Lorem anim ipsum",
+      },
+      "params": Object {
+        "id": 50000000,
+      },
+      "query": Object {},
+    },
+  },
+}
+`;
+
+exports[`Single Mime Type No parameters 1`] = `
+Object {
+  "all": Object {
+    "body": Object {
+      "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+      "password": "FFFFFF FFFFFF",
+      "username": "FFFFFF",
+    },
+    "cookies": Object {},
+    "headers": Object {},
+    "params": Object {},
+    "query": Object {},
+  },
+  "mimeTypes": Array [],
+  "required": Object {
+    "body": Object {
+      "password": "FFFFFF FFFFFF",
+      "username": "FFFFFF",
+    },
+    "cookies": Object {},
+    "headers": Object {},
+    "params": Object {},
+    "query": Object {},
+  },
+}
+`;
+
+exports[`Single Mime Type No request body 1`] = `
+Object {
+  "all": Object {
+    "body": Object {},
+    "cookies": Object {
+      "aCookie": "Lorem anim ipsum",
+    },
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {
+      "name": 50000000,
+    },
+  },
+  "mimeTypes": Array [],
+  "required": Object {
+    "body": Object {},
+    "cookies": Object {},
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {},
+  },
+}
+`;
+
+exports[`Single Mime Type Parameters and request body 1`] = `
+Object {
+  "all": Object {
+    "body": Object {
+      "email": "FFFFFFFFF@AAAAAAAAAAAAAAAAA.nnn",
+      "password": "FFFFFF FFFFFF",
+      "username": "FFFFFF",
+    },
+    "cookies": Object {
+      "aCookie": "Lorem anim ipsum",
+    },
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {
+      "name": 50000000,
+    },
+  },
+  "mimeTypes": Array [],
+  "required": Object {
+    "body": Object {
+      "password": "FFFFFF FFFFFF",
+      "username": "FFFFFF",
+    },
+    "cookies": Object {},
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {},
+  },
+}
+`;

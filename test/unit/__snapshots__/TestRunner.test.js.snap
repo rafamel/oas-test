@@ -1,0 +1,1182 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tr.load() loads all properties; sets collection; dereferences oas 1`] = `
+Object {
+  "components": Object {
+    "callbacks": Object {},
+    "examples": Object {},
+    "headers": Object {},
+    "links": Object {},
+    "parameters": Object {
+      "id": Object {
+        "description": "ID of the item to return",
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": Object {
+          "minimum": 0,
+          "type": "integer",
+        },
+      },
+    },
+    "requestBodies": Object {
+      "TodoCreate": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "properties": Object {
+                "done": Object {
+                  "type": "boolean",
+                },
+                "name": Object {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "name",
+                "done",
+              ],
+              "type": "object",
+            },
+          },
+        },
+        "required": true,
+      },
+      "TodoPatch": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "minProperties": 1,
+              "properties": Object {
+                "done": Object {
+                  "type": "boolean",
+                },
+                "name": Object {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+          },
+        },
+        "required": true,
+      },
+    },
+    "responses": Object {
+      "Todo": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "properties": Object {
+                "data": Object {
+                  "properties": Object {
+                    "done": Object {
+                      "type": "boolean",
+                    },
+                    "id": Object {
+                      "minimum": 0,
+                      "type": "integer",
+                    },
+                    "name": Object {
+                      "maxLength": 255,
+                      "minLength": 1,
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "name",
+                    "done",
+                    "user_id",
+                    "created_at",
+                    "id",
+                  ],
+                  "type": "object",
+                },
+                "status": Object {
+                  "enum": Array [
+                    "success",
+                  ],
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "status",
+                "data",
+              ],
+              "type": "object",
+            },
+          },
+        },
+        "description": "Sucessful response",
+      },
+      "Todos": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "properties": Object {
+                "data": Object {
+                  "items": Object {
+                    "properties": Object {
+                      "done": Object {
+                        "type": "boolean",
+                      },
+                      "id": Object {
+                        "minimum": 0,
+                        "type": "integer",
+                      },
+                      "name": Object {
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "type": "string",
+                      },
+                    },
+                    "required": Array [
+                      "name",
+                      "done",
+                      "user_id",
+                      "created_at",
+                      "id",
+                    ],
+                    "type": "object",
+                  },
+                  "type": "array",
+                },
+                "status": Object {
+                  "enum": Array [
+                    "success",
+                  ],
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "status",
+                "data",
+              ],
+              "type": "object",
+            },
+          },
+        },
+        "description": "Sucessful response",
+      },
+    },
+    "schemas": Object {
+      "Todo": Object {
+        "properties": Object {
+          "done": Object {
+            "type": "boolean",
+          },
+          "id": Object {
+            "minimum": 0,
+            "type": "integer",
+          },
+          "name": Object {
+            "maxLength": 255,
+            "minLength": 1,
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "name",
+          "done",
+          "user_id",
+          "created_at",
+          "id",
+        ],
+        "type": "object",
+      },
+    },
+    "securitySchemes": Object {
+      "bearerAuth": Object {
+        "bearerFormat": "JWT",
+        "description": "User access token as header bearer token (Authorization: Bearer access_token)",
+        "scheme": "bearer",
+        "type": "http",
+      },
+    },
+  },
+  "info": Object {
+    "description": "Powerful OpenAPI 3.0 based API testing, simplified. OAS 3 specification.",
+    "license": Object {
+      "name": "MIT",
+    },
+    "title": "Powerful OpenAPI 3.0 based API testing, simplified.",
+    "version": "0.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/api/todo": Object {
+      "get": Object {
+        "operationId": "listTodo",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "properties": Object {
+                    "data": Object {
+                      "items": Object {
+                        "properties": Object {
+                          "done": Object {
+                            "type": "boolean",
+                          },
+                          "id": Object {
+                            "minimum": 0,
+                            "type": "integer",
+                          },
+                          "name": Object {
+                            "maxLength": 255,
+                            "minLength": 1,
+                            "type": "string",
+                          },
+                        },
+                        "required": Array [
+                          "name",
+                          "done",
+                          "user_id",
+                          "created_at",
+                          "id",
+                        ],
+                        "type": "object",
+                      },
+                      "type": "array",
+                    },
+                    "status": Object {
+                      "enum": Array [
+                        "success",
+                      ],
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "status",
+                    "data",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Sucessful response",
+          },
+        },
+        "security": Array [
+          Object {
+            "bearerAuth": Array [],
+          },
+        ],
+        "summary": "listTodo",
+        "tags": Array [
+          "todo",
+        ],
+      },
+      "post": Object {
+        "operationId": "createTodo",
+        "parameters": Array [],
+        "requestBody": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "done": Object {
+                    "type": "boolean",
+                  },
+                  "name": Object {
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "name",
+                  "done",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "required": true,
+        },
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "properties": Object {
+                    "data": Object {
+                      "properties": Object {
+                        "done": Object {
+                          "type": "boolean",
+                        },
+                        "id": Object {
+                          "minimum": 0,
+                          "type": "integer",
+                        },
+                        "name": Object {
+                          "maxLength": 255,
+                          "minLength": 1,
+                          "type": "string",
+                        },
+                      },
+                      "required": Array [
+                        "name",
+                        "done",
+                        "user_id",
+                        "created_at",
+                        "id",
+                      ],
+                      "type": "object",
+                    },
+                    "status": Object {
+                      "enum": Array [
+                        "success",
+                      ],
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "status",
+                    "data",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Sucessful response",
+          },
+        },
+        "security": Array [
+          Object {
+            "bearerAuth": Array [],
+          },
+        ],
+        "summary": "createTodo",
+        "tags": Array [
+          "todo",
+        ],
+      },
+    },
+    "/api/todo/{id}": Object {
+      "delete": Object {
+        "operationId": "deleteTodo",
+        "parameters": Array [
+          Object {
+            "description": "ID of the item to return",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": Object {
+              "minimum": 0,
+              "type": "integer",
+            },
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "properties": Object {
+                    "data": Object {
+                      "enum": Array [
+                        true,
+                      ],
+                      "type": "boolean",
+                    },
+                    "status": Object {
+                      "enum": Array [
+                        "success",
+                      ],
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "status",
+                    "data",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Successful operation",
+          },
+        },
+        "security": Array [
+          Object {
+            "bearerAuth": Array [],
+          },
+        ],
+        "summary": "deleteTodo",
+        "tags": Array [
+          "todo",
+        ],
+      },
+      "get": Object {
+        "operationId": "showTodo",
+        "parameters": Array [
+          Object {
+            "description": "ID of the item to return",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": Object {
+              "minimum": 0,
+              "type": "integer",
+            },
+          },
+        ],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "properties": Object {
+                    "data": Object {
+                      "properties": Object {
+                        "done": Object {
+                          "type": "boolean",
+                        },
+                        "id": Object {
+                          "minimum": 0,
+                          "type": "integer",
+                        },
+                        "name": Object {
+                          "maxLength": 255,
+                          "minLength": 1,
+                          "type": "string",
+                        },
+                      },
+                      "required": Array [
+                        "name",
+                        "done",
+                        "user_id",
+                        "created_at",
+                        "id",
+                      ],
+                      "type": "object",
+                    },
+                    "status": Object {
+                      "enum": Array [
+                        "success",
+                      ],
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "status",
+                    "data",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Sucessful response",
+          },
+        },
+        "security": Array [
+          Object {
+            "bearerAuth": Array [],
+          },
+        ],
+        "summary": "showTodo",
+        "tags": Array [
+          "todo",
+        ],
+      },
+      "patch": Object {
+        "operationId": "patchTodo",
+        "parameters": Array [
+          Object {
+            "description": "ID of the item to return",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": Object {
+              "minimum": 0,
+              "type": "integer",
+            },
+          },
+        ],
+        "requestBody": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "minProperties": 1,
+                "properties": Object {
+                  "done": Object {
+                    "type": "boolean",
+                  },
+                  "name": Object {
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "type": "string",
+                  },
+                },
+                "type": "object",
+              },
+            },
+          },
+          "required": true,
+        },
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "properties": Object {
+                    "data": Object {
+                      "properties": Object {
+                        "done": Object {
+                          "type": "boolean",
+                        },
+                        "id": Object {
+                          "minimum": 0,
+                          "type": "integer",
+                        },
+                        "name": Object {
+                          "maxLength": 255,
+                          "minLength": 1,
+                          "type": "string",
+                        },
+                      },
+                      "required": Array [
+                        "name",
+                        "done",
+                        "user_id",
+                        "created_at",
+                        "id",
+                      ],
+                      "type": "object",
+                    },
+                    "status": Object {
+                      "enum": Array [
+                        "success",
+                      ],
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "status",
+                    "data",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Sucessful response",
+          },
+        },
+        "security": Array [
+          Object {
+            "bearerAuth": Array [],
+          },
+        ],
+        "summary": "patchTodo",
+        "tags": Array [
+          "todo",
+        ],
+      },
+      "put": Object {
+        "operationId": "updateTodo",
+        "parameters": Array [
+          Object {
+            "description": "ID of the item to return",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": Object {
+              "minimum": 0,
+              "type": "integer",
+            },
+          },
+        ],
+        "requestBody": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "done": Object {
+                    "type": "boolean",
+                  },
+                  "name": Object {
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "name",
+                  "done",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "required": true,
+        },
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "properties": Object {
+                    "data": Object {
+                      "properties": Object {
+                        "done": Object {
+                          "type": "boolean",
+                        },
+                        "id": Object {
+                          "minimum": 0,
+                          "type": "integer",
+                        },
+                        "name": Object {
+                          "maxLength": 255,
+                          "minLength": 1,
+                          "type": "string",
+                        },
+                      },
+                      "required": Array [
+                        "name",
+                        "done",
+                        "user_id",
+                        "created_at",
+                        "id",
+                      ],
+                      "type": "object",
+                    },
+                    "status": Object {
+                      "enum": Array [
+                        "success",
+                      ],
+                      "type": "string",
+                    },
+                  },
+                  "required": Array [
+                    "status",
+                    "data",
+                  ],
+                  "type": "object",
+                },
+              },
+            },
+            "description": "Sucessful response",
+          },
+        },
+        "security": Array [
+          Object {
+            "bearerAuth": Array [],
+          },
+        ],
+        "summary": "updateTodo",
+        "tags": Array [
+          "todo",
+        ],
+      },
+    },
+  },
+  "security": Array [],
+  "servers": Array [],
+  "tags": Array [
+    Object {
+      "description": "User operations",
+      "name": "user",
+    },
+  ],
+}
+`;
+
+exports[`tr.load() loads all properties; sets collection; dereferences oas 2`] = `
+Object {
+  "createTodo": Object {
+    "method": "post",
+    "operation": Object {
+      "operationId": "createTodo",
+      "parameters": Array [],
+      "requestBody": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "properties": Object {
+                "done": Object {
+                  "type": "boolean",
+                },
+                "name": Object {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "name",
+                "done",
+              ],
+              "type": "object",
+            },
+          },
+        },
+        "required": true,
+      },
+      "responses": Object {
+        "200": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "data": Object {
+                    "properties": Object {
+                      "done": Object {
+                        "type": "boolean",
+                      },
+                      "id": Object {
+                        "minimum": 0,
+                        "type": "integer",
+                      },
+                      "name": Object {
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "type": "string",
+                      },
+                    },
+                    "required": Array [
+                      "name",
+                      "done",
+                      "user_id",
+                      "created_at",
+                      "id",
+                    ],
+                    "type": "object",
+                  },
+                  "status": Object {
+                    "enum": Array [
+                      "success",
+                    ],
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "status",
+                  "data",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "description": "Sucessful response",
+        },
+      },
+      "security": Array [
+        Object {
+          "bearerAuth": Array [],
+        },
+      ],
+      "summary": "createTodo",
+      "tags": Array [
+        "todo",
+      ],
+    },
+    "path": "/api/todo",
+  },
+  "deleteTodo": Object {
+    "method": "delete",
+    "operation": Object {
+      "operationId": "deleteTodo",
+      "parameters": Array [
+        Object {
+          "description": "ID of the item to return",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": Object {
+            "minimum": 0,
+            "type": "integer",
+          },
+        },
+      ],
+      "responses": Object {
+        "200": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "data": Object {
+                    "enum": Array [
+                      true,
+                    ],
+                    "type": "boolean",
+                  },
+                  "status": Object {
+                    "enum": Array [
+                      "success",
+                    ],
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "status",
+                  "data",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "description": "Successful operation",
+        },
+      },
+      "security": Array [
+        Object {
+          "bearerAuth": Array [],
+        },
+      ],
+      "summary": "deleteTodo",
+      "tags": Array [
+        "todo",
+      ],
+    },
+    "path": "/api/todo/{id}",
+  },
+  "listTodo": Object {
+    "method": "get",
+    "operation": Object {
+      "operationId": "listTodo",
+      "parameters": Array [],
+      "responses": Object {
+        "200": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "data": Object {
+                    "items": Object {
+                      "properties": Object {
+                        "done": Object {
+                          "type": "boolean",
+                        },
+                        "id": Object {
+                          "minimum": 0,
+                          "type": "integer",
+                        },
+                        "name": Object {
+                          "maxLength": 255,
+                          "minLength": 1,
+                          "type": "string",
+                        },
+                      },
+                      "required": Array [
+                        "name",
+                        "done",
+                        "user_id",
+                        "created_at",
+                        "id",
+                      ],
+                      "type": "object",
+                    },
+                    "type": "array",
+                  },
+                  "status": Object {
+                    "enum": Array [
+                      "success",
+                    ],
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "status",
+                  "data",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "description": "Sucessful response",
+        },
+      },
+      "security": Array [
+        Object {
+          "bearerAuth": Array [],
+        },
+      ],
+      "summary": "listTodo",
+      "tags": Array [
+        "todo",
+      ],
+    },
+    "path": "/api/todo",
+  },
+  "patchTodo": Object {
+    "method": "patch",
+    "operation": Object {
+      "operationId": "patchTodo",
+      "parameters": Array [
+        Object {
+          "description": "ID of the item to return",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": Object {
+            "minimum": 0,
+            "type": "integer",
+          },
+        },
+      ],
+      "requestBody": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "minProperties": 1,
+              "properties": Object {
+                "done": Object {
+                  "type": "boolean",
+                },
+                "name": Object {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string",
+                },
+              },
+              "type": "object",
+            },
+          },
+        },
+        "required": true,
+      },
+      "responses": Object {
+        "200": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "data": Object {
+                    "properties": Object {
+                      "done": Object {
+                        "type": "boolean",
+                      },
+                      "id": Object {
+                        "minimum": 0,
+                        "type": "integer",
+                      },
+                      "name": Object {
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "type": "string",
+                      },
+                    },
+                    "required": Array [
+                      "name",
+                      "done",
+                      "user_id",
+                      "created_at",
+                      "id",
+                    ],
+                    "type": "object",
+                  },
+                  "status": Object {
+                    "enum": Array [
+                      "success",
+                    ],
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "status",
+                  "data",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "description": "Sucessful response",
+        },
+      },
+      "security": Array [
+        Object {
+          "bearerAuth": Array [],
+        },
+      ],
+      "summary": "patchTodo",
+      "tags": Array [
+        "todo",
+      ],
+    },
+    "path": "/api/todo/{id}",
+  },
+  "showTodo": Object {
+    "method": "get",
+    "operation": Object {
+      "operationId": "showTodo",
+      "parameters": Array [
+        Object {
+          "description": "ID of the item to return",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": Object {
+            "minimum": 0,
+            "type": "integer",
+          },
+        },
+      ],
+      "responses": Object {
+        "200": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "data": Object {
+                    "properties": Object {
+                      "done": Object {
+                        "type": "boolean",
+                      },
+                      "id": Object {
+                        "minimum": 0,
+                        "type": "integer",
+                      },
+                      "name": Object {
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "type": "string",
+                      },
+                    },
+                    "required": Array [
+                      "name",
+                      "done",
+                      "user_id",
+                      "created_at",
+                      "id",
+                    ],
+                    "type": "object",
+                  },
+                  "status": Object {
+                    "enum": Array [
+                      "success",
+                    ],
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "status",
+                  "data",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "description": "Sucessful response",
+        },
+      },
+      "security": Array [
+        Object {
+          "bearerAuth": Array [],
+        },
+      ],
+      "summary": "showTodo",
+      "tags": Array [
+        "todo",
+      ],
+    },
+    "path": "/api/todo/{id}",
+  },
+  "updateTodo": Object {
+    "method": "put",
+    "operation": Object {
+      "operationId": "updateTodo",
+      "parameters": Array [
+        Object {
+          "description": "ID of the item to return",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "schema": Object {
+            "minimum": 0,
+            "type": "integer",
+          },
+        },
+      ],
+      "requestBody": Object {
+        "content": Object {
+          "application/json": Object {
+            "schema": Object {
+              "properties": Object {
+                "done": Object {
+                  "type": "boolean",
+                },
+                "name": Object {
+                  "maxLength": 255,
+                  "minLength": 1,
+                  "type": "string",
+                },
+              },
+              "required": Array [
+                "name",
+                "done",
+              ],
+              "type": "object",
+            },
+          },
+        },
+        "required": true,
+      },
+      "responses": Object {
+        "200": Object {
+          "content": Object {
+            "application/json": Object {
+              "schema": Object {
+                "properties": Object {
+                  "data": Object {
+                    "properties": Object {
+                      "done": Object {
+                        "type": "boolean",
+                      },
+                      "id": Object {
+                        "minimum": 0,
+                        "type": "integer",
+                      },
+                      "name": Object {
+                        "maxLength": 255,
+                        "minLength": 1,
+                        "type": "string",
+                      },
+                    },
+                    "required": Array [
+                      "name",
+                      "done",
+                      "user_id",
+                      "created_at",
+                      "id",
+                    ],
+                    "type": "object",
+                  },
+                  "status": Object {
+                    "enum": Array [
+                      "success",
+                    ],
+                    "type": "string",
+                  },
+                },
+                "required": Array [
+                  "status",
+                  "data",
+                ],
+                "type": "object",
+              },
+            },
+          },
+          "description": "Sucessful response",
+        },
+      },
+      "security": Array [
+        Object {
+          "bearerAuth": Array [],
+        },
+      ],
+      "summary": "updateTodo",
+      "tags": Array [
+        "todo",
+      ],
+    },
+    "path": "/api/todo/{id}",
+  },
+}
+`;

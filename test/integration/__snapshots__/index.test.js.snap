@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`w/ app & oas Callbacks receive all args 1`] = `
+Object {
+  "all": Object {
+    "body": Object {
+      "done": false,
+      "name": "Lorem anim ipsum",
+    },
+    "cookies": Object {
+      "aCookie": "Lorem anim ipsum",
+    },
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {
+      "name": 50000000,
+    },
+  },
+  "mimeTypes": Array [],
+  "required": Object {
+    "body": Object {
+      "done": false,
+      "name": "Lorem anim ipsum",
+    },
+    "cookies": Object {},
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {},
+  },
+}
+`;
+
+exports[`w/ app & oas Callbacks receive all args 2`] = `
+Object {
+  "context": Object {},
+  "endpoint": Object {
+    "method": "put",
+    "operation": null,
+    "path": "/api/todo/{id}",
+  },
+  "id": "updateTodo",
+  "iteration": 0,
+  "name": "200",
+  "oas": null,
+}
+`;
+
+exports[`w/ app & oas Callbacks receive all args 3`] = `
+Object {
+  "data": [Function],
+  "repeat": 1,
+  "request": [Function],
+  "response": [Function],
+  "validate": null,
+}
+`;
+
+exports[`w/ app & oas Callbacks receive all args 4`] = `
+Object {
+  "context": Object {},
+  "endpoint": Object {
+    "method": "put",
+    "operation": null,
+    "path": "/api/todo/{id}",
+  },
+  "id": "updateTodo",
+  "iteration": 0,
+  "name": "200",
+  "oas": null,
+}
+`;
+
+exports[`w/ app & oas Callbacks receive all args 5`] = `
+Object {
+  "data": [Function],
+  "repeat": 1,
+  "request": [Function],
+  "response": [Function],
+  "validate": null,
+}
+`;
+
+exports[`w/ app & oas Callbacks receive all args 6`] = `
+Object {
+  "context": Object {},
+  "endpoint": Object {
+    "method": "put",
+    "operation": null,
+    "path": "/api/todo/{id}",
+  },
+  "id": "updateTodo",
+  "iteration": 0,
+  "name": "200",
+  "oas": null,
+}
+`;
+
+exports[`w/ app & oas Callbacks receive all args 7`] = `
+Object {
+  "data": [Function],
+  "repeat": 1,
+  "request": [Function],
+  "response": [Function],
+  "validate": null,
+}
+`;
+
+exports[`w/ app & oas Generates fake data for header and body 1`] = `
+Object {
+  "all": Object {
+    "body": Object {
+      "done": false,
+      "name": "Lorem anim ipsum",
+    },
+    "cookies": Object {
+      "aCookie": "Lorem anim ipsum",
+    },
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {
+      "name": 50000000,
+    },
+  },
+  "mimeTypes": Array [],
+  "required": Object {
+    "body": Object {
+      "done": false,
+      "name": "Lorem anim ipsum",
+    },
+    "cookies": Object {},
+    "headers": Object {
+      "some": "Lorem anim ipsum",
+    },
+    "params": Object {
+      "id": 50000000,
+    },
+    "query": Object {},
+  },
+}
+`;
+
+exports[`w/ app Callbacks receive all args 1`] = `
+Object {
+  "context": Object {},
+  "endpoint": Object {
+    "method": "get",
+    "operation": null,
+    "path": "/api/wappwooas",
+  },
+  "id": "get:/api/wappwooas",
+  "iteration": 0,
+  "name": "200",
+  "oas": null,
+}
+`;
+
+exports[`w/ app Callbacks receive all args 2`] = `
+Object {
+  "data": [Function],
+  "repeat": 1,
+  "request": [Function],
+  "response": [Function],
+  "validate": null,
+}
+`;
+
+exports[`w/ app Callbacks receive all args 3`] = `
+Object {
+  "context": Object {},
+  "endpoint": Object {
+    "method": "get",
+    "operation": null,
+    "path": "/api/wappwooas",
+  },
+  "id": "get:/api/wappwooas",
+  "iteration": 0,
+  "name": "200",
+  "oas": null,
+}
+`;
+
+exports[`w/ app Callbacks receive all args 4`] = `
+Object {
+  "data": [Function],
+  "repeat": 1,
+  "request": [Function],
+  "response": [Function],
+  "validate": null,
+}
+`;
+
+exports[`w/ app Callbacks receive all args 5`] = `
+Object {
+  "context": Object {},
+  "endpoint": Object {
+    "method": "get",
+    "operation": null,
+    "path": "/api/wappwooas",
+  },
+  "id": "get:/api/wappwooas",
+  "iteration": 0,
+  "name": "200",
+  "oas": null,
+}
+`;
+
+exports[`w/ app Callbacks receive all args 6`] = `
+Object {
+  "data": [Function],
+  "repeat": 1,
+  "request": [Function],
+  "response": [Function],
+  "validate": null,
+}
+`;

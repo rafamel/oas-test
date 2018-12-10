@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getData() Returns fake required data for task.data = true 1`] = `
+Object {
+  "body": Object {
+    "password": "FFFFFF FFFFFF",
+    "username": "FFFFFF",
+  },
+  "cookies": Object {},
+  "headers": Object {},
+  "params": Object {},
+  "query": Object {},
+}
+`;
