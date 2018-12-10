@@ -1,4 +1,5 @@
 import deep from 'lodash.clonedeep';
+import assert from 'assert';
 // sync alternative: json-ref-lite
 import $RefParser from 'json-schema-ref-parser';
 import SwaggerParser from 'swagger-parser';
@@ -26,9 +27,10 @@ export default class TestRunner {
       app: null,
       url: null,
       settings: {
-        assert: (bool) => expect(bool).toBe(true),
-        describe: describe,
-        test: test,
+        assert: (bool) =>
+          (global.expect && global.expect(bool).toBe(true)) || assert,
+        describe: global.describe || ((_, cb) => cb()),
+        test: global.test || ((_, cb) => cb()),
         logger: console,
         logall: false,
         errorHandler: (err) => {
@@ -57,10 +59,13 @@ export default class TestRunner {
       // Dereference and validate oas
       const promise = Promise.resolve(oas)
         .then((oas) => $RefParser.dereference(deep(oas)))
-        .then((oas) => SwaggerParser.validate(oas))
-        .catch((err) => this[STORE_SYMBOL].settings.errorHandler(err));
-      this[STORE_SYMBOL].oas = promise;
-      this[STORE_SYMBOL].collection = promise.then(collect);
+        .then((oas) => SwaggerParser.validate(oas));
+
+      this[STORE_SYMBOL].oas = promise.catch(() => {});
+      this[STORE_SYMBOL].collection = promise.then(collect).catch(() => {});
+
+      promise.catch((err) => this[STORE_SYMBOL].settings.errorHandler(err));
+      this.promise = this.promise.then(() => promise.then(() => {}));
     } else if (oas !== undefined) {
       this[STORE_SYMBOL].oas = Promise.resolve(null);
       this[STORE_SYMBOL].collection = Promise.resolve(null);
